@@ -4,14 +4,22 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.utils.Disposable
+import ktx.assets.disposeSafely
 
-object SpriteLoader {
+object SpriteLoader : Disposable {
     private const val spritePath = "sprites/"
     private const val pngExtension = ".png"
 
+    private val textures = mutableMapOf<String, Texture>()
+
     fun getTexture(spriteName: String, extension: String = pngExtension): Texture {
         val resource = spritePath + spriteName + extension
-        return Texture(Gdx.files.internal(resource))
+        val texture = textures[resource]
+        if (texture == null) {
+            textures[resource] = Texture(Gdx.files.internal(resource))
+        }
+        return textures[resource]!!
     }
 
     fun getTextureRegion(
@@ -26,5 +34,11 @@ object SpriteLoader {
     fun getSprite(spriteName: String, extension: String = pngExtension): Sprite {
         val texture = getTexture(spriteName, extension)
         return Sprite(texture)
+    }
+
+    override fun dispose() {
+        textures.forEach {
+            it.value.disposeSafely()
+        }
     }
 }
