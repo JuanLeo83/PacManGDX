@@ -8,8 +8,9 @@ import com.badlogic.gdx.utils.Disposable
 import com.jgpl.utils.sprite.SpriteLoader
 import ktx.assets.disposeSafely
 
-class SpriteAnimation(private val texture: Texture, speed: Float = 3f, private val repeat: Boolean = true) :
-    Disposable {
+class SpriteAnimation(
+    private val texture: Texture, speed: Float = 3f, private val repeat: Boolean = true
+) : Disposable {
 
     private val animation = mutableListOf<TextureRegion>()
     private var currentFrame: Int = 0

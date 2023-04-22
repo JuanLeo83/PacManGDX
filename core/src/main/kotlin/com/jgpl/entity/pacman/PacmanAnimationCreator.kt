@@ -11,6 +11,7 @@ object PacmanAnimationCreator : AnimationCreator {
 
     private const val frameWidth: Int = 16
     private const val frameHeight: Int = 16
+    private const val animationSpeed: Float = 30f
 
     override fun getAnimations(): AnimationCollection {
         val texture = SpriteLoader.getTexture("sprites")
@@ -24,7 +25,7 @@ object PacmanAnimationCreator : AnimationCreator {
     }
 
     private fun createRightAnimation(texture: Texture): SpriteAnimation {
-        return SpriteAnimation(texture, speed = 10f).apply {
+        return SpriteAnimation(texture, speed = animationSpeed).apply {
             setFrame(Vector2((frameWidth * 0).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 1).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 2).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
@@ -33,7 +34,7 @@ object PacmanAnimationCreator : AnimationCreator {
     }
 
     private fun createLeftAnimation(texture: Texture): SpriteAnimation {
-        return SpriteAnimation(texture, speed = 10f).apply {
+        return SpriteAnimation(texture, speed = animationSpeed).apply {
             setFrame(Vector2((frameWidth * 0).toFloat(), (frameHeight * 1).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 1).toFloat(), (frameHeight * 1).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 2).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
@@ -42,7 +43,7 @@ object PacmanAnimationCreator : AnimationCreator {
     }
 
     private fun createUpAnimation(texture: Texture): SpriteAnimation {
-        return SpriteAnimation(texture, speed = 10f).apply {
+        return SpriteAnimation(texture, speed = animationSpeed).apply {
             setFrame(Vector2((frameWidth * 0).toFloat(), (frameHeight * 2).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 1).toFloat(), (frameHeight * 2).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 2).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
@@ -51,7 +52,7 @@ object PacmanAnimationCreator : AnimationCreator {
     }
 
     private fun createDownAnimation(texture: Texture): SpriteAnimation {
-        return SpriteAnimation(texture, speed = 10f).apply {
+        return SpriteAnimation(texture, speed = animationSpeed).apply {
             setFrame(Vector2((frameWidth * 0).toFloat(), (frameHeight * 3).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 1).toFloat(), (frameHeight * 3).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 2).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
@@ -60,7 +61,7 @@ object PacmanAnimationCreator : AnimationCreator {
     }
 
     private fun createDieAnimation(texture: Texture): SpriteAnimation {
-        return SpriteAnimation(texture, speed = 10f, repeat = false).apply {
+        return SpriteAnimation(texture, speed = animationSpeed, repeat = false).apply {
             setFrame(Vector2((frameWidth * 3).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 4).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
             setFrame(Vector2((frameWidth * 5).toFloat(), (frameHeight * 0).toFloat()), frameWidth, frameHeight)
