@@ -12,8 +12,10 @@ class SandboxScreen : KtxScreen {
 
     override fun render(delta: Float) {
         spriteBatch.use {
-            resources.level.draw(it)
-            resources.pacman.draw(it, delta)
+            with(resources) {
+                level.draw(it)
+                pacman.draw(it, delta)
+            }
         }
     }
 
